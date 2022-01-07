@@ -1,0 +1,87 @@
+Q.List 5 difference between Browser JS(console) v Nodejs
+
+Ans:
+->As both of them are JavaScript executor, and Node uses the JavaScript engine of a browser (Chrome), so differences are not much there.
+->It is just the Node wrapper which has been written on top of JavaScript V8 Runtime engine, which is deleting few objects and also including some according to the requirement of Node.
+
+Browser js(Console) :
+1>“window” is a predefined global object which has functions and attributes, that have to deal with window that has been drawn.
+2>“location” is another predefined object in browsers, that has all the information about the url we have loaded.
+3>“document”, which is also another predefined global variable in browsers, has the html which is rendered.
+4>Browsers may have an object named “global”, but it will be the exact one as “window”.
+5>Browsers don’t have “require” predefined. You may include it in your app for asynchronous file loading.
+6>Moduling is not mandatory in client side JavaScript, i.e. in browsers.
+
+Nodejs:
+1>Node doesn’t have a predefined “window” object cause it doesn’t have a window to draw anything.
+2>“location” object is related to a particular url; that means it is for page specific. So, node doesn’t require that.
+3>Ofcourse Node doesn’t have “document” object also, cause it never have to render anything in a page.
+4>Node has “global”, which is a predefined global object. It contains several functions that are not available in browsers, cause they are needed for server side works only.
+5>“require” object is predefined in Node which is used to include modules in the app.
+6>In Node everything is a module. we must keep the code inside a module.
+
+Q.watch & summary 5 points - https://www.youtube.com/watch?v=SmE4OwHztCc&ab_channel=JSConf
+
+Ans:
+1.The browser blocks some rendering of a webpage until certain resources are loaded first while other resources are loaded asynchronously.
+
+2.When a browser sends a request to a server to fetch an HTML document, the server returns an HTML page in binary stream format.the browser can convert the binary format into a readable text file.
+
+3.when browser renders a webpage it involves with DOM,CSSOM, and Render tree.
+
+DOM:-Document object model-a high level web API
+->When the browser reads HTML code, whenever it encounters an HTML element like html, body, div etc., it creates a JavaScript object called a Node.Eventually, all HTML elements will be converted to JavaScript objects.
+->After the browser has created Nodes from the HTML document, it has to create a tree-like structure of these node objects.
+->A DOM tree starts from the topmost element which is html element and branches out as per the occurrence and nesting of HTML elements in the document.
+
+CSSOM:-CSS Object ModeL
+->After constructing the DOM, the browser reads CSS from all the sources and construct a CSSOM.CSSOM is a Tree Like structure just like DOM.
+->Each node in this tree contains CSS style information that will be applied to DOM elements that it specified by the selector.
+->most of the browser comes with its own stylesheet which is called as user agent stylesheet, the browser first computes final CSS properties for DOM element by overriding user agent styles with CSS provided by the developer properties and then construct a node.
+
+Render Tree:-
+->Render-Tree is also a tree-like structure constructed by combining DOM and CSSOM trees together. The browser has to calculate the layout of each visible element and paint them on the screen, for that browser uses this Render-Tree. 
+->Hence, unless Render-Tree isn’t constructed, nothing is going to get printed on the screen which is why we need both DOM and CSSOM trees.
+
+4.Layout operation:-
+->The first browser creates the layout of each individual Render-Tree node. The layout consists of the size of each node in pixels and where (position) it will be printed on the screen. This process is called layout since the browser is calculating the layout information of each node.
+
+5.Paint operation:-
+->elements in the Render-Tree can overlap each other and they can have CSS properties that make them frequently change the look, position, or geometry (such as animations), the browser creates a layer for it.
+->Creating layers helps the browser efficiently perform painting operations throughout the lifecycle of a web page such as while scrolling or resizing the browser window.
+->Now that we have layers, we can combine them and draw them on the screen. But the browser does not draw all the layers in a single go. Each layer is drawn separately first.
+->Inside each layer, the browser fills the individual pixels for whatever visible property the element has such as border, background color, shadow, text, etc.
+->You can visualize different layers on a web page from Chrome DevTools. Open DevTools and from more tools options, select Layers. You can also visualize layer borders from the Rendering panel.
+
+6.Compositing operation:-
+->Until now, we haven’t drawn a single pixel on the screen. What we have are different layers that should be drawn on the screen in a specific order. In compositing operations, these layers are sent to GPU to finally draw it on the screen.
+->Sending entire layers to draw is clearly inefficient because this has to happen every time there is a reflow (layout) or repaint. Hence, a layer is broken down into different tiles which then will be drawn on the screen. You can also visualize these tiles in Chrome’s DevTool Rendering panel.
+
+DOM-->CSSOM-->Render Tree-->Layout operation-->Paint operation-->Compositing operation
+
+
+Q.Execute the below code and write your description in txt file
+ a.typeof(1)
+ b.typeof(1.1)
+ c.typeof('1.1')
+ d.typeof(true)
+ e.typeof(null)
+ f.typeof(undefined)
+ g.typeof([])
+ h.typeof({})
+ i.typeof(NaN)
+
+Ans:
+
+ a.typeof(1) is Number
+ b.typeof(1.1) is Number
+ c.typeof('1.1') is String
+ d.typeof(true) is Boolean
+ e.typeof(null) is Object
+ f.typeof(undefined) is Undefined
+ g.typeof([]) is Object
+ h.typeof({}) is Object
+ i.typeof(NaN) is Number
+
+
+
